@@ -115,11 +115,11 @@ def main(argv=None):
     if args.cmd == "stream":
         _driver("stream", args, dry, extra=["--dynamo-todo", args.dynamo_todo])
     elif args.cmd == "batch-on-stream":
-        dynamo_rust_json = args.dynamo_rust_json
-        if args.capture_dynamo_rust_json:
-            _cargo_bin("record_batch_via_stream", [], dry, output=args.capture_dynamo_rust_json)
-            dynamo_rust_json = args.capture_dynamo_rust_json
-        extra = ["--dynamo-rust-json", dynamo_rust_json] if dynamo_rust_json else []
+        dynamo_v2_json = args.dynamo_v2_json
+        if args.capture_dynamo_v2_json:
+            _cargo_bin("record_batch_via_stream", [], dry, output=args.capture_dynamo_v2_json)
+            dynamo_v2_json = args.capture_dynamo_v2_json
+        extra = ["--dynamo-rust-json", dynamo_v2_json] if dynamo_v2_json else []
         _driver("batch-on-stream", args, dry, extra=extra)
     elif args.cmd == "dynamo-stream":
         extra = ["--", args.fixture] + (["--text"] if args.text else [])
